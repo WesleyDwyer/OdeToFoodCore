@@ -13,10 +13,15 @@ namespace OdeToFood.Data
             restaurants = new List<Restaurant>()
             {
                 new Restaurant{Id = 1, Name = "Chicken Spot",Cuisine = CuisineType.None,Location ="Spanish Town"},
-                new Restaurant{Id = 1, Name = "Jerk Pork Spot",Cuisine = CuisineType.Jamaican,Location ="Kingston"},
-                new Restaurant{Id = 1, Name = "Chillingz Spot",Cuisine = CuisineType.Italian,Location ="Saint Catherine"}
+                new Restaurant{Id = 2, Name = "Jerk Pork Spot",Cuisine = CuisineType.Jamaican,Location ="Kingston"},
+                new Restaurant{Id = 3, Name = "Chillingz Spot",Cuisine = CuisineType.Italian,Location ="Saint Catherine"}
 
             };
+        }
+
+        public Restaurant GetById(int id)
+        {
+            return restaurants.SingleOrDefault(r => r.Id == id);
         }
         public IEnumerable<Restaurant> GetRestaurantByName(string name = null)
         {
