@@ -15,6 +15,9 @@ namespace OdeToFoodCore.Pages.Restuarants
         private readonly IConfiguration config;
         private readonly IRestaurantData restaurantData;
         public IEnumerable<Restaurant> Restaurants { get; set; }
+        
+        [BindProperty(SupportsGet = true)]
+        public string SearchTerm { get; set; }
         public ListModel(IConfiguration config, IRestaurantData restaurantData)
         {
             this.config = config;
@@ -25,7 +28,7 @@ namespace OdeToFoodCore.Pages.Restuarants
         {
             //Message = "Hello, World!";
             Message = config["Message"];
-            Restaurants = restaurantData.GetAll();
+            Restaurants = restaurantData.GetRestaurantByName(SearchTerm);
         }
     }
 }
